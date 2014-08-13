@@ -36,7 +36,7 @@ public final class Constants {
     }
 
     public static final File mcDir;
-    public static final String modpackRepo = "http://raw.githubusercontent.com/jk-5-modpack/Modpack/master/";
+    public static final String modpackRepo = "https://raw.githubusercontent.com/jk-5-modpack/Modpack/master/";
     public static final String modpackInfoFile = modpackRepo + "modpack.json";
     public static final String minecraftVersionInfoUrl = "https://s3.amazonaws.com/Minecraft.Download/versions/{VERSION}/{VERSION}.json";
     public static final String forgeInstallerUrl = "http://files.minecraftforge.net/maven/net/minecraftforge/forge/{VERSION}/forge-{VERSION}-installer.jar";

@@ -100,6 +100,14 @@ public class UpdatingTweaker implements ITweaker {
                 try{
                     zis = new ZipInputStream(Constants.getInputStream(Constants.modpackRepo + "data.zip"));
                     ZipEntry entry;
+                    System.out.println("Force-updating mods and configuration");
+                    /*if(server){
+                        new File(destPath, "config").delete();
+                        new File(destPath, "mods").delete();
+                    }else{
+                        new File(packDir, "config").delete();
+                        new File(packDir, "mods").delete();
+                    }*/
                     while((entry = zis.getNextEntry()) != null){
                         File dest = new File(gameDir, entry.getName());
                         if(entry.isDirectory()){

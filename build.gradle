@@ -4,6 +4,7 @@ apply plugin: 'idea'
 group = 'jk_5.modpack'
 version = '1.0.0-SNAPSHOT'
 repositories {
+    mavenLocal()
     mavenCentral()
     maven {
         name 'reening'
@@ -17,6 +18,7 @@ repositories {
 
 dependencies {
     compile 'net.minecraft:launchwrapper:1.9'
+    compile 'jk-5.jsonlibrary:JsonLibrary:2.0.0-SNAPSHOT'
 }
 
 compileJava {
@@ -24,6 +26,7 @@ compileJava {
     targetCompatibility '1.6'
 }
 
+jar.baseName = "ModUpdater"
 jar.manifest {
     attributes "Main-Class": "jk_5.modupdater.Installer"
 }
