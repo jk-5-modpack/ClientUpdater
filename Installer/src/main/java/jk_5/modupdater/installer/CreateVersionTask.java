@@ -66,7 +66,7 @@ public class CreateVersionTask implements Runnable {
                 }
             }
             if(add){
-                if(e.asObject().get("url") != null && e.asObject().get("url").equals("http://files.minecraftforge.net/maven/")){
+                if(e.asObject().get("url") != null && e.asObject().get("url").asString().equals("http://files.minecraftforge.net/maven/")){
                     e.asObject().set("url", "http://repo1.maven.org/maven2/"); //Forge only hosts packed versions...
                 }
                 libs.add(e);
