@@ -55,6 +55,7 @@ public class ConfigGenerator {
 
         recursiveModDiscovery(new File("mods"), modpack);
         recursiveModDiscovery(new File("config"), modpack);
+        recursiveModDiscovery(new File("Flan"), modpack);
         modpack.set("updaterChecksum", HashUtils.hash(new File("updater.jar")));
 
         Iterator<JsonElement> it = modpack.get("mods").asArray().iterator();

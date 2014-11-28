@@ -89,7 +89,6 @@ public class Updater {
                 logger.error("Error while reading local modpack.json", e);
                 logger.info("This is a non-fatal error. Resetting all data in modpack.json");
                 localModpackInfo = new JsonObject();
-                localModpackInfo.add("mods", new JsonArray());
             }finally{
                 if(fr != null){
                     try{
@@ -102,6 +101,10 @@ public class Updater {
         }else{
             localModpackInfo = new JsonObject();
         }
+
+        if(localModpackInfo.get("mods") == null) localModpackInfo.add("mods", new JsonArray());
+        if(localModpackInfo.get("libraries") == null) localModpackInfo.add("libraries", new JsonArray());
+        if(localModpackInfo.get("ignore") == null) localModpackInfo.add("ignore", new JsonArray());
 
         for(JsonElement mod : remoteModpackInfo.get("mods").asArray()){
             JsonObject modObj = new JsonObject();
@@ -123,8 +126,13 @@ public class Updater {
             }
         }
 
+        for(JsonElement ignored : remoteModpackInfo.get("ignore").asArray()){
+            validPaths.add(new File(ignored.asString()).getPath());
+        }
+
         recursiveFileDeletion(new File(profileDir, "mods"));
         recursiveFileDeletion(new File(profileDir, "config"));
+        recursiveFileDeletion(new File(profileDir, "Flan"));
 
         String mcVersion = remoteModpackInfo.get("mcversion").asString();
         String forgeVersion = remoteModpackInfo.get("forgeversion").asString();
